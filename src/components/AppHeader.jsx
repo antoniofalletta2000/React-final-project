@@ -1,9 +1,16 @@
 import Logo from "../assets/images/logo2.png"
-import { useLocation, Link } from "react-router-dom"
+import { useLocation, Link, useSearchParams } from "react-router-dom"
+
 
 export default function AppHeader() {
 
+    const [searchParams, setSearchParams] = useSearchParams();
     const location = useLocation()
+
+    const handleChange = (e) => {
+        setSearchParams({ q: e.target.value });
+    };
+
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-white border-bottom border-primary">
@@ -28,7 +35,8 @@ export default function AppHeader() {
                         </ul>
                         {location.pathname !== "/" && (
                             <form className="d-flex" role="search">
-                                <input className="form-control me-2" type="search" placeholder="Cerca..." aria-label="Search" />
+                                <input className="form-control me-2" type="search" placeholder="Cerca..." aria-label="Search" value={searchParams.get('q') || ''}
+                                    onChange={handleChange} />
                                 <button className="btn btn-outline-primary" type="submit">Cerca</button>
                             </form>
                         )}

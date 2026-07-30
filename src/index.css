@@ -1,1 +1,12 @@
 @import url('bootstrap');
+
+.dept_card:hover , .emp_card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #007bff;
+    border: 1px solid #007bff !important; 
+}
+
+#home_logo{
+    object-fit: contain;
+    max-height: 35vh;
+}
