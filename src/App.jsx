@@ -1,30 +1,22 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios';
-
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import DefaultLayout from "./layouts/DefaultLayout"
+import HomePage from "./pages/HomePage"
+import Departments from "./pages/Departments"
+import Employees from "./pages/Employees"
 
 function App() {
 
-const[employees, setEmployees] = useState([])
-
-useEffect(()=> {
-
-  axios.get('http://127.0.0.1:8000/api/employees')
-  .then(res => setEmployees(res.data))
-  .catch(err => console.error(err));
-
-}, [])
-
-  
-
   return (
     <>
-      <button className='btn btn-primary'>Funziona</button>
-      {employees.map(employee=> (
-
-        <p key={employee.id}>{employee.name}</p>
-
-        )
-      )}
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/dipartimenti" element={<Departments/>} />
+            <Route path="/dipendenti" element={<Employees/>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
