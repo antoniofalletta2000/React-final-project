@@ -1,11 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 
 export default function Departments() {
 
     const [searchParams] = useSearchParams()
     const query = searchParams.get('q') || ''
+    const navigate = useNavigate()
     const [departments, setDepartments] = useState([])
     const [loading, setLoading] = useState(true)
 
@@ -43,7 +44,8 @@ export default function Departments() {
                 </thead>
                 <tbody>
                     {filtered.map(department => (
-                        <tr key={department.id}>
+                        <tr key={department.id} onClick={() => navigate(`/dipartimenti/${department.id}`)}
+                            style={{ cursor: 'pointer' }}>
                             <td>{department.name}</td>
                             <td>{department.address}</td>
                             <td>{department.email}</td>

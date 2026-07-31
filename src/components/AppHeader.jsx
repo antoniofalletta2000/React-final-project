@@ -6,6 +6,10 @@ export default function AppHeader() {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const location = useLocation()
+    const hideSearch = 
+    location.pathname === '/' ||
+    location.pathname.startsWith('/dipartimenti/') ||
+    location.pathname.startsWith('/dipendenti/');
 
     const handleChange = (e) => {
         setSearchParams({ q: e.target.value });
@@ -33,7 +37,7 @@ export default function AppHeader() {
                                 <Link className="nav-link" to="/dipendenti">Dipendenti</Link>
                             </li>
                         </ul>
-                        {location.pathname !== "/" && (
+                        {!hideSearch && (
                             <form className="d-flex" role="search">
                                 <input className="form-control me-2" type="search" placeholder="Cerca..." aria-label="Search" value={searchParams.get('q') || ''}
                                     onChange={handleChange} />
