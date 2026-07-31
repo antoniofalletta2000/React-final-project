@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from "react-router"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import {Navigate} from "react-router-dom"
+
 
 export default function SingleDepartment() {
-    const { id } = useParams();
+    const { id } = useParams()
     const navigate = useNavigate()
 
     const [department, setDepartment] = useState(null);
