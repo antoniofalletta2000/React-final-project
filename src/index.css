@@ -1,9 +1,18 @@
 @import url('bootstrap');
 
+.nav-link:hover{
+    color: #007bff;
+}
+
 .dept_card:hover , .emp_card:hover{
     transform: scale(1.05);
     box-shadow: 0 0 10px #007bff;
-    border: 1px solid #007bff !important; 
+    border: 3px solid #007bff !important; 
+    transition: 1000ms;
+}
+
+.dept_card, .emp_card{
+    border:  3px solid #007bff !important;
 }
 
 #home_logo{
@@ -11,3 +20,7 @@
     max-height: 35vh;
 }
 
+#footer-brand{
+    object-fit: contain;
+    width: auto;
+}

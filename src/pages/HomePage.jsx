@@ -1,4 +1,6 @@
-import Logo from "../assets/images/logo2.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Logo from "../assets/images/logo3.png"
+import { faUser, faLandmark  } from '@fortawesome/free-solid-svg-icons'
 
 export default function HomePage() {
 
@@ -21,15 +23,24 @@ export default function HomePage() {
                 <div className="col py-2">
                     <a href="/dipartimenti" className="text-decoration-none">
                         <div className="card dept_card border border-dark">
-                            <h2 className="p-5 text-center">Dipartimenti</h2>
+                            <div className="d-flex flex-column align-items-center justify-content-center gap-3">
+                                
+                                <FontAwesomeIcon className="p-5" icon={faLandmark } size="2x" />
+                                <h5 className="opacity-75">Dipartimenti</h5>
+                            </div>
                         </div>
                     </a>
 
                 </div>
                 <div className="col py-2">
-                     <a href="/dipendenti" className="text-decoration-none">
+                    <a href="/dipendenti" className="text-decoration-none">
                         <div className="card emp_card border border-dark">
-                            <h2 className="p-5 text-center">Dipendenti</h2>
+                            <div className="d-flex flex-column align-items-center justify-content-center gap-3">
+                                
+                                <FontAwesomeIcon className="p-5" icon={faUser} size="2x" />
+                                <h5 className="opacity-75">Dipendenti</h5>
+                            </div>
+
                         </div>
                     </a>
                 </div>

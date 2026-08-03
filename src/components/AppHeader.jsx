@@ -1,4 +1,4 @@
-import Logo from "../assets/images/logo2.png"
+import Logo from "../assets/images/logo3.png"
 import { useLocation, Link, useSearchParams } from "react-router-dom"
 
 
@@ -19,7 +19,7 @@ export default function AppHeader() {
         <>
             <nav className="navbar navbar-expand-lg bg-white border-bottom border-primary">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">
+                    <Link className="navbar-logo" to="/">
                         <img src={Logo} alt="Logo" width="100%" height="75" />
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

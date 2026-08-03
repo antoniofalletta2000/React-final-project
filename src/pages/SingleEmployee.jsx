@@ -39,7 +39,7 @@ export default function SingleEmployee() {
                     <h5 className="text-center">Competenze:</h5>
                     <ul className="list-unstyled">
                         {employee.skills?.map(skill => (
-                            <li key={skill.id} className="p-2 m-2 rounded " style={{ backgroundColor: skill.color, border: '1px solid #dee2e6' }}>
+                            <li key={skill.id} className="p-2 m-2 rounded text-white text-center " style={{ backgroundColor: skill.color, border: '1px solid #dee2e6' }}>
                                 {skill.name}
                             </li>
                         ))}

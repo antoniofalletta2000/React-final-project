@@ -1,11 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 
 export default function Employees() {
 
     const [employees, setEmployees] = useState([])
     const [searchParams] = useSearchParams()
+    const navigate = useNavigate()
     const query = searchParams.get('q') || ''
     const [loading, setLoading] = useState(true)
 
@@ -45,7 +46,8 @@ export default function Employees() {
                 </thead>
                 <tbody>
                     {filtered.map(employee => (
-                        <tr key={employee.id}>
+                        <tr key={employee.id} onClick={() => navigate(`/dipendenti/${employee.id}`)}
+                            style={{ cursor: 'pointer' }}>
                             <td>{employee.last_name}</td>
                             <td>{employee.name}</td>
                             <td>{employee.department.name}</td>
