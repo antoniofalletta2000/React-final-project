@@ -50,9 +50,6 @@ export default function SingleEmployee() {
 
 
 
-<button>ciao</button>
-
-
             <table className="table table-striped-columns">
                 <thead>
                     <tr>
