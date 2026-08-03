@@ -34,7 +34,7 @@ export default function Departments() {
 
     return (
         <div className="container mt-4 mb-5">
-            <table className="table table-striped">
+            <table className="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Nome</th>

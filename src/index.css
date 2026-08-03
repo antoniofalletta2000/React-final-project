@@ -1,5 +1,9 @@
 @import url('bootstrap');
 
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+
 .nav-link:hover{
     color: #007bff;
 }
@@ -23,4 +27,9 @@
 #footer-brand{
     object-fit: contain;
     width: auto;
+}
+
+.table-hover {
+    --bs-table-hover-bg: #007bff;
+    --bs-table-hover-color: #ffffff;
 }
