@@ -27,7 +27,7 @@ export default function AppFooter() {
 
                     <div className="col">
                         <ul className="list-unstyled">
-                            <li><h5 className="text-primary">CONTATTI</h5></li>
+                            <li><h5 className="text-info">CONTATTI</h5></li>
                             <li className="pb-2">Palazzo Orleans</li>
                             <li className="pb-2">Piazza Indipendenza 21</li>
                             <li className="pb-4">90129 Palermo ( PA )</li>
@@ -49,7 +49,7 @@ export default function AppFooter() {
 
                     <div className="col">
                         <ul className="list-unstyled">
-                            <li><h5 className="text-primary">TRASPARENZA</h5></li>
+                            <li><h5 className="text-info">TRASPARENZA</h5></li>
                             <li>
                                 <a className="text-decoration-none text-white" href="#">Amministrazione Trasparente</a>
                             </li>
@@ -58,19 +58,19 @@ export default function AppFooter() {
 
                     <div className="col">
                         <ul className="list-unstyled">
-                            <li><h5 className="text-primary pb-1">Seguici Su</h5></li>
+                            <li><h5 className="text-info pb-1">Seguici Su</h5></li>
                             <li>
                                 <div className="d-flex flex-wrap gap-3">
-                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                    <a href="#" target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faFacebookF} size="2x" className="text-white" />
                                     </a>
-                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                    <a href="#" target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faXTwitter} size="2x" className="text-white" />
                                     </a>
-                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                    <a href="#" target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faYoutube} size="2x" className="text-white" />
                                     </a>
-                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                    <a href="#" target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faInstagram} size="2x" className="text-white" />
                                     </a>
                                     <a href="https://www.linkedin.com/in/antonio-falletta-219607281/" target="_blank" rel="noopener noreferrer">

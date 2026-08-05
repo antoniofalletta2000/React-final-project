@@ -36,16 +36,16 @@ export default function AppHeader() {
                             <li><h5 className="text-primary text-center pb-1">Seguici Su</h5></li>
                             <li>
                                 <div className="d-flex flex-wrap gap-3">
-                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                    <a href="#" target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faFacebookF} size="lg" className="text-primary" />
                                     </a>
-                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                    <a href="#" target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faXTwitter} size="lg" className="text-primary" />
                                     </a>
-                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                    <a href="#" target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faYoutube} size="lg" className="text-primary" />
                                     </a>
-                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                    <a href="#" target="_blank" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faInstagram} size="lg" className="text-primary" />
                                     </a>
                                     <a href="https://www.linkedin.com/in/antonio-falletta-219607281/" target="_blank" rel="noopener noreferrer">
