@@ -1,42 +1,38 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useSearchParams, useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleArrowLeft, faUsers, faSearch } from "@fortawesome/free-solid-svg-icons"
+import { faCircleArrowLeft, faUsers, faSearch, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons"
 
 export default function Employees() {
     const [employees, setEmployees] = useState([])
-    const [searchParams] = useSearchParams()
     const navigate = useNavigate()
     const [query, setQuery] = useState('')
     const [loading, setLoading] = useState(true)
+    const [searching, setSearching] = useState(false)
     const [orderLastName, setOrderLastName] = useState('cognome')
+    const [page, setPage] = useState(1)
+    const [lastPage, setLastPage] = useState(1)
+    const [total, setTotal] = useState(0)
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/employees')
-            .then(res => {
-                console.log(res.data);
-                setEmployees(res.data);
-            })
-            .catch(err => console.error(err))
-            .finally(() => setLoading(false));
-    }, [])
+        const timer = setTimeout(() => {
+            setSearching(true)
+            axios.get(`http://localhost:8000/api/employees?page=${page}&search=${query}&sort=${orderLastName}`)
+                .then(res => {
+                    setEmployees(res.data.data)
+                    setLastPage(res.data.last_page)
+                    setTotal(res.data.total)
+                })
+                .catch(err => console.error(err))
+                .finally(() => {
+                    setLoading(false)
+                    setSearching(false)
+                });
+        }, 400)
 
-    // Protezione con Optional Chaining (?.) per evitare errori se 'department' o 'email' sono null
-    let filtered = employees.filter(employee => {
-        const q = query.toLowerCase();
-        const nameMatch = (employee.name || '').toLowerCase().includes(q);
-        const lastNameMatch = (employee.last_name || '').toLowerCase().includes(q);
-        const emailMatch = (employee.email || '').toLowerCase().includes(q);
-        const deptMatch = (employee.department?.name || '').toLowerCase().includes(q);
-        return nameMatch || lastNameMatch || emailMatch || deptMatch;
-    });
-
-    if (orderLastName === 'asc') {
-        filtered = [...filtered].sort((a, b) => (a.last_name || '').localeCompare(b.last_name || ''));
-    } else if (orderLastName === 'desc') {
-        filtered = [...filtered].sort((a, b) => (b.last_name || '').localeCompare(a.last_name || ''));
-    }
+        return () => clearTimeout(timer)
+    }, [page, query, orderLastName])
 
     if (loading) {
         return (
@@ -49,8 +45,7 @@ export default function Employees() {
 
     return (
         <div className="container py-4">
-            
-            {/* Header Pagina + Link Indietro */}
+
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <h2 className="fw-bold text-primary mb-0">
@@ -64,12 +59,9 @@ export default function Employees() {
                 </Link>
             </div>
 
-            
             <div className="card shadow-sm border-0 rounded-4 mb-4 bg-light">
                 <div className="card-body p-3">
                     <div className="row g-3 align-items-center">
-                        
-                        
                         <div className="col-12 col-md-6 col-lg-5">
                             <div className="input-group">
                                 <span className="input-group-text bg-white border-end-0">
@@ -81,15 +73,22 @@ export default function Employees() {
                                     className="form-control border-start-0 shadow-none"
                                     placeholder="Cerca per nome, cognome, mail o dipartimento..."
                                     value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
+                                    onChange={(e) => {
+                                        setQuery(e.target.value)
+                                        setPage(1)
+                                    }}
                                 />
+                                {searching && (
+                                    <span className="input-group-text bg-white border-start-0">
+                                        <div className="spinner-border spinner-border-sm text-primary" role="status"></div>
+                                    </span>
+                                )}
                             </div>
                         </div>
 
-                        
                         <div className="col-12 col-md-6 col-lg-7 d-flex align-items-center justify-content-md-end gap-3">
                             <span className="badge bg-white text-secondary border px-3 py-2 rounded-pill small">
-                                Trovati: <strong>{filtered.length}</strong>
+                                In pagina: <strong>{employees.length}</strong> / Totale: <strong>{total}</strong>
                             </span>
 
                             <div className="d-flex align-items-center gap-2">
@@ -100,7 +99,10 @@ export default function Employees() {
                                     id="sortSelect"
                                     className="form-select form-select-sm w-auto shadow-none"
                                     value={orderLastName}
-                                    onChange={(e) => setOrderLastName(e.target.value)}
+                                    onChange={(e) => {
+                                        setOrderLastName(e.target.value)
+                                        setPage(1)
+                                    }}
                                 >
                                     <option value="cognome">Cognome (Predefinito)</option>
                                     <option value="asc">Cognome A → Z</option>
@@ -108,13 +110,11 @@ export default function Employees() {
                                 </select>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
 
-            
-            <div className="card shadow-sm border-0 rounded-4 overflow-hidden mb-5">
+            <div className="card shadow-sm border-0 rounded-4 overflow-hidden mb-3">
                 <div className="table-responsive">
                     <table className="table table-hover align-middle mb-0">
                         <thead className="table-light">
@@ -126,10 +126,10 @@ export default function Employees() {
                             </tr>
                         </thead>
                         <tbody>
-                            {filtered.length > 0 ? (
-                                filtered.map(employee => (
-                                    <tr 
-                                        key={employee.id} 
+                            {employees.length > 0 ? (
+                                employees.map(employee => (
+                                    <tr
+                                        key={employee.id}
                                         onClick={() => navigate(`/dipendenti/${employee.id}`)}
                                         style={{ cursor: 'pointer' }}
                                     >
@@ -157,6 +157,31 @@ export default function Employees() {
                         </tbody>
                     </table>
                 </div>
+            </div>
+
+            {/* Controlli paginazione */}
+            <div className="d-flex justify-content-between align-items-center">
+                <button
+                    className="btn btn-outline-primary"
+                    disabled={page === 1}
+                    onClick={() => setPage(p => p - 1)}
+                >
+                    <FontAwesomeIcon icon={faChevronLeft} className="me-2" />
+                    Precedente
+                </button>
+
+                <span className="text-muted">
+                    Pagina {page} di {lastPage}
+                </span>
+
+                <button
+                    className="btn btn-outline-primary"
+                    disabled={page === lastPage}
+                    onClick={() => setPage(p => p + 1)}
+                >
+                    Successivo
+                    <FontAwesomeIcon icon={faChevronRight} className="ms-2" />
+                </button>
             </div>
 
         </div>
