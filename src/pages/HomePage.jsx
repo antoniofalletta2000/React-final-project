@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Logo from "../assets/images/logo3.png"
-import { faUser, faLandmark, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faBuilding, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 export default function HomePage() {
     return (
@@ -33,7 +33,7 @@ export default function HomePage() {
                     <Link to="/dipartimenti" className="text-decoration-none">
                         <div className="card shadow-sm border-0 rounded-4 p-4 text-center h-100 bg-light transition-all">
                             <div className="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 mx-auto" style={{ width: '65px', height: '65px' }}>
-                                <FontAwesomeIcon icon={faLandmark} size="xl" />
+                                <FontAwesomeIcon icon={faBuilding} size="xl" />
                             </div>
                             <h4 className="fw-bold text-dark mb-2">Dipartimenti</h4>
                             <p className="text-muted small mb-4">

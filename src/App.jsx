@@ -6,12 +6,14 @@ import Employees from "./pages/Employees"
 import SingleDepartment from "./pages/SingleDepartment"
 import SingleEmployee from "./pages/SingleEmployee"
 import NotFound from "./components/NotFound"
+import ScrollToTop from "./components/ScrollToTop"
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route element={<DefaultLayout />}>
             <Route index element={<HomePage />} />
