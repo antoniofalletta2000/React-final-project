@@ -1,23 +1,17 @@
 import Logo from "../assets/images/logo3.png"
 import { useLocation, Link, useSearchParams } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookF, faXTwitter, faYoutube, faInstagram, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 
 export default function AppHeader() {
 
-    const [searchParams, setSearchParams] = useSearchParams();
     const location = useLocation()
-    const hideSearch = 
-    location.pathname === '/' ||
-    location.pathname.startsWith('/dipartimenti/') ||
-    location.pathname.startsWith('/dipendenti/');
 
-    const handleChange = (e) => {
-        setSearchParams({ q: e.target.value });
-    };
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-white border-bottom border-primary">
+            <nav className="navbar navbar-custom-bg navbar-expand-lg bg-white border-bottom border-primary p-5">
                 <div className="container-fluid">
                     <Link className="navbar-logo" to="/">
                         <img src={Logo} alt="Logo" width="100%" height="75" />
@@ -27,23 +21,44 @@ export default function AppHeader() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
+                            <li className="nav-item fw-bold">
                                 <Link className="nav-link" aria-current="page" to="/">Home</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item fw-bold">
                                 <Link className="nav-link" to="/dipartimenti">Dipartimenti</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item fw-bold">
                                 <Link className="nav-link" to="/dipendenti">Dipendenti</Link>
                             </li>
                         </ul>
-                        {!hideSearch && (
-                            <form className="d-flex" role="search">
-                                <input className="form-control me-2" type="search" placeholder="Cerca..." aria-label="Search" value={searchParams.get('q') || ''}
-                                    onChange={handleChange} />
-                                <button className="btn btn-outline-primary" type="submit">Cerca</button>
-                            </form>
-                        )}
+
+                            <ul className="list-unstyled">
+                            <li><h5 className="text-primary text-center pb-1">Seguici Su</h5></li>
+                            <li>
+                                <div className="d-flex flex-wrap gap-3">
+                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                        <FontAwesomeIcon icon={faFacebookF} size="lg" className="text-primary" />
+                                    </a>
+                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                        <FontAwesomeIcon icon={faXTwitter} size="lg" className="text-primary" />
+                                    </a>
+                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                        <FontAwesomeIcon icon={faYoutube} size="lg" className="text-primary" />
+                                    </a>
+                                    <a href="..." target="_blank" rel="noopener noreferrer">
+                                        <FontAwesomeIcon icon={faInstagram} size="lg" className="text-primary" />
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/antonio-falletta-219607281/" target="_blank" rel="noopener noreferrer">
+                                        <FontAwesomeIcon icon={faLinkedin} size="lg" className="text-primary" />
+                                    </a>
+                                    <a href="https://github.com/antoniofalletta2000" target="_blank" rel="noopener noreferrer">
+                                        <FontAwesomeIcon icon={faGithub} size="lg" className="text-primary" />
+                                    </a>
+                                </div>
+
+                            </li>
+                        </ul>
+                        
 
                     </div>
                 </div>

@@ -25,8 +25,8 @@ export default function HomePage() {
                         <div className="card dept_card border border-dark">
                             <div className="d-flex flex-column align-items-center justify-content-center gap-3">
                                 
-                                <FontAwesomeIcon className="p-5" icon={faLandmark } size="2x" />
-                                <h5 className="opacity-75">Dipartimenti</h5>
+                                <FontAwesomeIcon className="pt-5 px-5 pb-2" icon={faLandmark } size="2x" />
+                                <h5 className="opacity-75 pb-2">Dipartimenti</h5>
                             </div>
                         </div>
                     </a>
@@ -37,8 +37,8 @@ export default function HomePage() {
                         <div className="card emp_card border border-dark">
                             <div className="d-flex flex-column align-items-center justify-content-center gap-3">
                                 
-                                <FontAwesomeIcon className="p-5" icon={faUser} size="2x" />
-                                <h5 className="opacity-75">Dipendenti</h5>
+                                <FontAwesomeIcon className="pt-5 px-5 pb-2" icon={faUser} size="2x" />
+                                <h5 className="opacity-75 pb-2">Dipendenti</h5>
                             </div>
 
                         </div>

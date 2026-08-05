@@ -5,6 +5,7 @@ import Departments from "./pages/Departments"
 import Employees from "./pages/Employees"
 import SingleDepartment from "./pages/SingleDepartment"
 import SingleEmployee from "./pages/SingleEmployee"
+import NotFound from "./components/NotFound"
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="/dipartimenti/:id" element={<SingleDepartment />} />
             <Route path="/dipendenti" element={<Employees />} />
             <Route path="/dipendenti/:id" element={<SingleEmployee />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -4,6 +4,14 @@ body {
     font-family: 'Titillium Web', sans-serif;
 }
 
+.navbar-custom-bg {
+    background-image: url('./assets/images/trinacria2.png');
+    background-size: fill;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
 .nav-link:hover{
     color: #007bff;
 }
@@ -32,4 +40,10 @@ body {
 .table-hover {
     --bs-table-hover-bg: #007bff;
     --bs-table-hover-color: #ffffff;
+}
+
+#emp_img{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
 }
