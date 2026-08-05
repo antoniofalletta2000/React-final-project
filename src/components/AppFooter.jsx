@@ -92,11 +92,19 @@ export default function AppFooter() {
 
 
             <hr />
+
+            <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center small text-secondary">
+                    <p className="mb-1 mb-sm-0">
+                        © {new Date().getFullYear()} Regione Sicilia — Piattaforma RSHR. Tutti i diritti riservati.
+                    </p>
+                    <div className="d-flex gap-3">
+                        <a href="#" className="text-secondary text-decoration-none">Privacy Policy</a>
+                        <a href="#" className="text-secondary text-decoration-none">Note Legali</a>
+                    </div>
+                </div>
+
             </div>
 
-
-
-        
         </footer>
     )
 }
