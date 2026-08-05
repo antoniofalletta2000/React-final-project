@@ -43,7 +43,7 @@ export default function SingleDepartment() {
             
             
             <div className="d-flex justify-content-end mb-3">
-                <Link to="/dipendenti">
+                <Link to="/dipartimenti">
                     <FontAwesomeIcon icon={faCircleArrowLeft} size="3x" className="text-primary" />
                 </Link>
             </div>
