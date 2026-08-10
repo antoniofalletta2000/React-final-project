@@ -20,6 +20,7 @@ export default function Employees() {
             setSearching(true)
             axios.get(`http://localhost:8000/api/employees?page=${page}&search=${query}&sort=${orderLastName}`)
                 .then(res => {
+                    console.log(res.data)
                     setEmployees(res.data.data)
                     setLastPage(res.data.last_page)
                     setTotal(res.data.total)
@@ -159,7 +160,7 @@ export default function Employees() {
                 </div>
             </div>
 
-            {/* Controlli paginazione */}
+            
             <div className="d-flex justify-content-between align-items-center">
                 <button
                     className="btn btn-outline-primary"
